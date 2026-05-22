@@ -16,7 +16,7 @@ function LoginPage({
       <div>
         <span className="eyebrow">Account</span>
         <h2>Sign in or create an account.</h2>
-        <p>Choose customer for booking packages or travel agent/admin for managing packages and requests.</p>
+        <p>Choose customer for booking packages or admin for managing packages and requests.</p>
 
         {session && (
           <button className="secondary" onClick={signOut}>
@@ -58,7 +58,7 @@ function LoginPage({
                   className={authForm.role === "agent" ? "active" : ""}
                   onClick={() => setAuthForm({ ...authForm, role: "agent" })}
                 >
-                  <ShieldCheck size={17} /> Travel agent
+                  <ShieldCheck size={17} /> Admin
                 </button>
               </div>
             </>
@@ -87,7 +87,7 @@ function LoginPage({
         <div className="panel signed-in">
           <User size={34} />
           <strong>{profile?.name || session.user.email}</strong>
-          <span>{profile?.role === "agent" ? "Travel agent/admin" : "Customer"}</span>
+          <span>{profile?.role === "agent" ? "Admin" : "Customer"}</span>
         </div>
       )}
     </section>

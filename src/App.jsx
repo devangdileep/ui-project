@@ -80,6 +80,13 @@ function App() {
     }
   }, [session?.user?.id, profile?.role]);
 
+  useEffect(() => {
+    if (message) {
+      window.alert(message);
+      setMessage("");
+    }
+  }, [message]);
+
   const visiblePackages = useMemo(() => {
     return packages.filter((item) => {
       const packageText = `${item.name} ${item.place} ${item.type}`.toLowerCase();
@@ -277,7 +284,7 @@ function App() {
     }
 
     setRequest(emptyRequest);
-    setMessage("Request sent. A travel agent can now accept or decline it.");
+    setMessage("Request sent. An admin can now accept or decline it.");
     loadOrders("customer");
   }
 
@@ -301,7 +308,7 @@ function App() {
     event.preventDefault();
 
     if (!isAgent) {
-      setMessage("Only travel agents can manage packages.");
+      setMessage("Only admins can manage packages.");
       return;
     }
 
@@ -402,6 +409,21 @@ function App() {
     }
 
     if (page === "/agent") {
+      if (!isAgent) {
+        return (
+          <LoginPage
+            session={session}
+            profile={profile}
+            authMode={authMode}
+            setAuthMode={setAuthMode}
+            authForm={authForm}
+            setAuthForm={setAuthForm}
+            handleAuth={handleAuth}
+            signOut={signOut}
+          />
+        );
+      }
+
       return (
         <AgentPage
           isAgent={isAgent}
@@ -440,7 +462,6 @@ function App() {
       <Navbar page={page} openPage={openPage} />
 
       <main>
-        {message && <p className="message">{message}</p>}
         {showCurrentPage()}
       </main>
 
