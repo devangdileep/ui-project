@@ -19,11 +19,11 @@ function AgentPage({
     <section className="section agent" id="agent">
       <div className="section-title">
         <div>
-          <span className="eyebrow">Admin dashboard</span>
+          <span className="eyebrow">Agent dashboard</span>
           <h2>Manage packages and customer requests.</h2>
         </div>
 
-        {!isAgent && <p className="muted">Sign in as an admin to unlock these tools.</p>}
+        {!isAgent && <p className="muted">Sign in as an agent to unlock these tools.</p>}
       </div>
 
       {isAgent && (

@@ -284,7 +284,7 @@ function App() {
     }
 
     setRequest(emptyRequest);
-    setMessage("Request sent. An admin can now accept or decline it.");
+    setMessage("Request sent. An agent can now accept or decline it.");
     loadOrders("customer");
   }
 
@@ -308,7 +308,7 @@ function App() {
     event.preventDefault();
 
     if (!isAgent) {
-      setMessage("Only admins can manage packages.");
+      setMessage("Only agents can manage packages.");
       return;
     }
 
