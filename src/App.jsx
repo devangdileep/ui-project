@@ -233,6 +233,10 @@ function App() {
       return;
     }
 
+    if (authMode === "signin") {
+      openPage(authForm.role === "agent" ? "/agent" : "/packages");
+    }
+
     setMessage(authMode === "signup" ? "Account created. Please sign in." : "Signed in successfully.");
   }
 
@@ -357,7 +361,7 @@ function App() {
     if (error) {
       setMessage(error.message);
     } else {
-      setMessage(`Request ${status}.`);
+      setMessage(status === "accepted" ? "Request approved." : "Request declined.");
       loadOrders("agent");
     }
   }
@@ -400,6 +404,7 @@ function App() {
           setAuthForm={setAuthForm}
           handleAuth={handleAuth}
           signOut={signOut}
+          openPage={openPage}
         />
       );
     }
@@ -420,6 +425,7 @@ function App() {
             setAuthForm={setAuthForm}
             handleAuth={handleAuth}
             signOut={signOut}
+            openPage={openPage}
           />
         );
       }

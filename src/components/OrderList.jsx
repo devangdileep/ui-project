@@ -1,6 +1,12 @@
 import React from "react";
 import { Check, X } from "lucide-react";
 
+function getStatusText(status) {
+  if (status === "accepted") return "Approved";
+  if (status === "declined") return "Declined";
+  return "Pending";
+}
+
 function OrderList({ orders, onStatus }) {
   if (!orders.length) {
     return <p className="muted">No requests yet.</p>;
@@ -19,12 +25,12 @@ function OrderList({ orders, onStatus }) {
             {order.note && <small>{order.note}</small>}
           </div>
 
-          <span className={`status ${order.status}`}>{order.status}</span>
+          <span className={`status ${order.status}`}>{getStatusText(order.status)}</span>
 
           {onStatus && order.status === "pending" && (
             <div className="actions">
               <button onClick={() => onStatus(order.id, "accepted")}>
-                <Check size={16} /> Accept
+                <Check size={16} /> Approve
               </button>
               <button onClick={() => onStatus(order.id, "declined")}>
                 <X size={16} /> Decline

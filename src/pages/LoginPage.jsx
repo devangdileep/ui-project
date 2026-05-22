@@ -10,6 +10,7 @@ function LoginPage({
   setAuthForm,
   handleAuth,
   signOut,
+  openPage,
 }) {
   return (
     <section className="section auth-grid" id="login">
@@ -86,6 +87,11 @@ function LoginPage({
           <User size={34} />
           <strong>{profile?.name || session.user.email}</strong>
           <span>{profile?.role === "agent" ? "Agent" : "Customer"}</span>
+          {profile?.role === "agent" ? (
+            <button className="primary" onClick={() => openPage("/agent")}>Open agent dashboard</button>
+          ) : (
+            <button className="primary" onClick={() => openPage("/orders")}>View my orders</button>
+          )}
         </div>
       )}
     </section>
