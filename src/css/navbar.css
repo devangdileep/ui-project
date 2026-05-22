@@ -1,0 +1,44 @@
+.nav {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 7%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  align-items: center;
+  color: var(--primary-dark);
+  display: flex;
+  font-size: 1.35rem;
+  font-weight: 800;
+  gap: 9px;
+}
+
+.links {
+  align-items: center;
+  color: #33413d;
+  display: flex;
+  gap: 24px;
+  font-weight: 700;
+}
+
+.links a:hover {
+  color: var(--primary);
+}
+
+.icon-button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  display: none;
+  height: 42px;
+  place-items: center;
+  width: 42px;
+}

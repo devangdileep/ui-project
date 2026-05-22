@@ -1,0 +1,75 @@
+.dashboard {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: minmax(260px, 0.8fr) 1fr;
+}
+
+.request-panel {
+  grid-column: 1 / -1;
+}
+
+.two-col {
+  display: flex;
+  gap: 10px;
+}
+
+.table-list {
+  display: grid;
+  gap: 12px;
+}
+
+.row {
+  align-items: center;
+  background: #fbfcfc;
+  border: 1px solid #e6ecea;
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr auto auto;
+  padding: 14px;
+}
+
+.row div {
+  display: grid;
+  gap: 4px;
+}
+
+.row button {
+  background: var(--surface-soft);
+  color: var(--primary-dark);
+  min-height: 38px;
+  padding: 9px 11px;
+}
+
+.order-row {
+  grid-template-columns: 1fr auto auto;
+}
+
+.status {
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 7px 10px;
+  text-transform: capitalize;
+}
+
+.status.pending {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.status.accepted {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.status.declined {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}

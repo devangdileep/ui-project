@@ -1,0 +1,31 @@
+.auth-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.tabs,
+.role-row {
+  display: flex;
+  gap: 10px;
+}
+
+.tabs button,
+.role-row button {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: #40504b;
+  display: flex;
+  padding: 10px 14px;
+}
+
+.tabs .active,
+.role-row .active {
+  background: var(--primary-dark);
+  color: #ffffff;
+}
+
+.signed-in {
+  justify-items: start;
+}

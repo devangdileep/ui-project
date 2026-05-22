@@ -1,0 +1,82 @@
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .intro,
+  .section-title,
+  .services,
+  .booking,
+  .auth-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search {
+    max-width: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .menu-button {
+    display: grid;
+  }
+
+  .links {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px;
+    position: absolute;
+    right: 7%;
+    top: 72px;
+    width: min(260px, 86vw);
+  }
+
+  .links.open {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 64vh;
+  }
+
+  .section {
+    padding: 52px 6%;
+  }
+
+  .notice {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .grid,
+  .service-list,
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .role-row,
+  .two-col,
+  .actions {
+    flex-direction: column;
+  }
+
+  .row,
+  .order-row {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+}
