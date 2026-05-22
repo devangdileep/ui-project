@@ -1,7 +1,12 @@
 import React from "react";
 import { services } from "../data";
 
-function HomePage({ isSupabaseReady, session, profile, packages, orders, isAgent }) {
+function HomePage({ isSupabaseReady, session, profile, packages, orders, isAgent, openPage }) {
+  function goToPackages(event) {
+    event.preventDefault();
+    openPage("/packages");
+  }
+
   return (
     <>
       <section className="hero" id="home">
@@ -11,7 +16,7 @@ function HomePage({ isSupabaseReady, session, profile, packages, orders, isAgent
           <p>
             Customers can request a package. Travel agents can add, edit, remove packages and accept or decline requests.
           </p>
-          <a className="primary" href="#packages">Explore packages</a>
+          <a className="primary" href="/packages" onClick={goToPackages}>Explore packages</a>
         </div>
       </section>
 

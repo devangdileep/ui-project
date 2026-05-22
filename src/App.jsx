@@ -36,6 +36,7 @@ function App() {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
+  const [page, setPage] = useState(window.location.pathname);
 
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("All");
@@ -56,17 +57,21 @@ function App() {
 
   useEffect(() => {
     loadPackages();
+    window.addEventListener("popstate", updatePageFromUrl);
 
     if (!isSupabaseReady) {
       setLoading(false);
-      return;
+      return () => window.removeEventListener("popstate", updatePageFromUrl);
     }
 
     getUserSession();
 
     const { data } = supabase.auth.onAuthStateChange(handleUserChange);
 
-    return () => data.subscription.unsubscribe();
+    return () => {
+      data.subscription.unsubscribe();
+      window.removeEventListener("popstate", updatePageFromUrl);
+    };
   }, []);
 
   useEffect(() => {
@@ -84,6 +89,16 @@ function App() {
       return correctCategory && packageText.includes(searchText);
     });
   }, [packages, query, filter]);
+
+  function updatePageFromUrl() {
+    setPage(window.location.pathname);
+    window.scrollTo(0, 0);
+  }
+
+  function openPage(path) {
+    window.history.pushState({}, "", path);
+    updatePageFromUrl();
+  }
 
   async function getUserSession() {
     const { data } = await supabase.auth.getSession();
@@ -221,7 +236,7 @@ function App() {
 
   function choosePackage(item) {
     setRequest({ ...request, package_id: item.id });
-    document.getElementById("request")?.scrollIntoView({ behavior: "smooth" });
+    openPage("/request");
   }
 
   async function createOrder(event) {
@@ -279,7 +294,7 @@ function App() {
       description: item.description || "",
     });
 
-    document.getElementById("agent")?.scrollIntoView({ behavior: "smooth" });
+    openPage("/agent");
   }
 
   async function savePackage(event) {
@@ -340,37 +355,9 @@ function App() {
     }
   }
 
-  if (loading) {
-    return <div className="center-screen">Loading travel portal...</div>;
-  }
-
-  return (
-    <div>
-      <Navbar />
-
-      <main>
-        <HomePage
-          isSupabaseReady={isSupabaseReady}
-          session={session}
-          profile={profile}
-          packages={packages}
-          orders={orders}
-          isAgent={isAgent}
-        />
-
-        <LoginPage
-          session={session}
-          profile={profile}
-          authMode={authMode}
-          setAuthMode={setAuthMode}
-          authForm={authForm}
-          setAuthForm={setAuthForm}
-          handleAuth={handleAuth}
-          signOut={signOut}
-        />
-
-        {message && <p className="message">{message}</p>}
-
+  function showCurrentPage() {
+    if (page === "/packages") {
+      return (
         <PackagesPage
           query={query}
           setQuery={setQuery}
@@ -381,16 +368,41 @@ function App() {
           choosePackage={choosePackage}
           editPackage={editPackage}
         />
+      );
+    }
 
+    if (page === "/request") {
+      return (
         <RequestPage
           packages={packages}
           request={request}
           setRequest={setRequest}
           createOrder={createOrder}
         />
+      );
+    }
 
-        {session && !isAgent && <MyOrdersPage orders={orders} />}
+    if (page === "/login") {
+      return (
+        <LoginPage
+          session={session}
+          profile={profile}
+          authMode={authMode}
+          setAuthMode={setAuthMode}
+          authForm={authForm}
+          setAuthForm={setAuthForm}
+          handleAuth={handleAuth}
+          signOut={signOut}
+        />
+      );
+    }
 
+    if (page === "/orders") {
+      return <MyOrdersPage orders={orders} session={session} isAgent={isAgent} openPage={openPage} />;
+    }
+
+    if (page === "/agent") {
+      return (
         <AgentPage
           isAgent={isAgent}
           packages={packages}
@@ -403,6 +415,33 @@ function App() {
           removePackage={removePackage}
           updateOrderStatus={updateOrderStatus}
         />
+      );
+    }
+
+    return (
+      <HomePage
+        isSupabaseReady={isSupabaseReady}
+        session={session}
+        profile={profile}
+        packages={packages}
+        orders={orders}
+        isAgent={isAgent}
+        openPage={openPage}
+      />
+    );
+  }
+
+  if (loading) {
+    return <div className="center-screen">Loading travel portal...</div>;
+  }
+
+  return (
+    <div>
+      <Navbar page={page} openPage={openPage} />
+
+      <main>
+        {message && <p className="message">{message}</p>}
+        {showCurrentPage()}
       </main>
 
       <Footer />
