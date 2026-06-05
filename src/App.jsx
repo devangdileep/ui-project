@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import PackagesPage from "./pages/PackagesPage.jsx";
 import RequestPage from "./pages/RequestPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx";
 import { demoPackages } from "./data";
 import { isSupabaseReady, supabase } from "./lib/supabase";
 
@@ -427,6 +428,10 @@ function App() {
           openPage={openPage}
         />
       );
+    }
+
+    if (page === "/contact") {
+      return <ContactPage />;
     }
 
     if (page === "/orders" || page === "/agent") {
