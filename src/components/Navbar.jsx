@@ -26,6 +26,7 @@ function Navbar({ page, openPage }) {
         <a className={page === "/packages" ? "active" : ""} href="/packages" onClick={(event) => goToPage(event, "/packages")}>Packages</a>
         <a className={page === "/request" ? "active" : ""} href="/request" onClick={(event) => goToPage(event, "/request")}>Book Trip</a>
         <a className={page === "/dashboard" ? "active" : ""} href="/dashboard" onClick={(event) => goToPage(event, "/dashboard")}>Dashboard</a>
+        <a className={page === "/contact" ? "active" : ""} href="/contact" onClick={(event) => goToPage(event, "/contact")}>Contact Us</a>
         <a className={page === "/login" ? "active" : ""} href="/login" onClick={(event) => goToPage(event, "/login")}>Account</a>
       </nav>
     </header>
