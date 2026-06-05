@@ -1,5 +1,7 @@
 # 🌍 Wanderly Tours & Travels
 
+**Live URL:** [https://ui-project-482s.vercel.app/](https://ui-project-482s.vercel.app/)
+
 Wanderly is a modern, high-fidelity tours and travels web portal built with **React** and backed by **Supabase**. It offers a seamless experience for customers to browse curated holiday packages, make booking requests, and track approvals, while allowing travel agents to manage package listings and approve bookings.
 
 ---
@@ -34,7 +36,7 @@ This project was engineered and designed by:
 | Developer Name | Roll Number | Portfolio |
 | :--- | :--- | :--- |
 | **Devang Dileep** | `AM.SC.U4CSE25213` | [View Portfolio 🌐](https://devangdileep.github.io/personal-portfolio/) |
-| **Ananth Krishna CS** | `AM.SC.U4CSE203` | [View Portfolio 🌐](https://ananth2007.github.io/project-portfolio/) |
+| **Ananth Krishna CS** | `AM.SC.U4CSE25203` | [View Portfolio 🌐](https://ananth2007.github.io/project-portfolio/) |
 | **Harith Bhuvan S** | `AM.SC.U4CSE25222` | [View Portfolio 🌐](https://harith10069.github.io/portfolio-website/) |
 | **Sravan NN** | `AM.SC.U4CSE22251` | [View Portfolio 🌐](https://thesvnverse.github.io/portfolio-website/) |
 | **Muhammed Jasim Khan** | `AM.SC.U4CSE25333` | [View Portfolio 🌐](https://jasimjaskerkhan-a11y.github.io/MY_PORTFOLIO/) |
