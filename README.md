@@ -29,6 +29,54 @@ Wanderly is a modern, high-fidelity tours and travels web portal built with **Re
 
 ---
 
+## 📂 Project Structure
+
+```text
+ui-project/
+├── screenshots/
+│   ├── contact.png
+│   ├── home.png
+│   ├── login.png
+│   ├── packages.png
+│   └── request.png
+├── src/
+│   ├── components/
+│   │   ├── Footer.jsx
+│   │   └── Navbar.jsx
+│   ├── css/
+│   │   ├── agent.css
+│   │   ├── contactme.css
+│   │   ├── global.css
+│   │   ├── home.css
+│   │   ├── login.css
+│   │   ├── navbar.css
+│   │   ├── packages.css
+│   │   └── request.css
+│   ├── lib/
+│   │   └── supabase.js
+│   ├── pages/
+│   │   ├── ContactPage.jsx
+│   │   ├── DashboardPage.jsx
+│   │   ├── HomePage.jsx
+│   │   ├── LoginPage.jsx
+│   │   ├── PackagesPage.jsx
+│   │   └── RequestPage.jsx
+│   ├── App.jsx
+│   ├── data.js
+│   └── main.jsx
+├── supabase/
+│   └── schema.sql
+├── .env.example
+├── .gitignore
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+└── vercel.json
+```
+
+---
+
 ## 👥 Meet the Developers
 
 This project was engineered and designed by:
@@ -40,6 +88,25 @@ This project was engineered and designed by:
 | **Harith Bhuvan S** | `AM.SC.U4CSE25222` | [View Portfolio 🌐](https://harith10069.github.io/portfolio-website/) |
 | **Sravan NN** | `AM.SC.U4CSE22251` | [View Portfolio 🌐](https://thesvnverse.github.io/portfolio-website/) |
 | **Muhammed Jasim Khan** | `AM.SC.U4CSE25333` | [View Portfolio 🌐](https://jasimjaskerkhan-a11y.github.io/MY_PORTFOLIO/) |
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+![Home Page](./screenshots/home.png)
+
+### Holiday Packages
+![Holiday Packages](./screenshots/packages.png)
+
+### Booking Request Form
+![Booking Request Form](./screenshots/request.png)
+
+### User Account Login
+![User Account Login](./screenshots/login.png)
+
+### Contact & Developers Showcase
+![Contact & Developers](./screenshots/contact.png)
 
 ---
 
